@@ -32,7 +32,10 @@ module.exports = function(grunt) {
     },
     // image minification
     imagemin: {
-      dynamic: {
+        dynamic: {
+        options: {
+            cache: 'false'
+        },
         files: [{
           expand: true,
           // this directory will be where we watch for images to minify
@@ -81,7 +84,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-hub');
 
   // registering those tasks
   grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'sass', 'watch', 'jshint']);
