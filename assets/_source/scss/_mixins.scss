@@ -1,0 +1,62 @@
+// @include respond-to(425px);
+//// @media only screen and (min-width: 425px) { CONTENT }
+@mixin respond-to($breakpoint) {
+
+	@media only screen and (min-width: $breakpoint) {
+		@content;
+	}
+}
+
+// @include font-size(1);
+//// font-size: 16px; line-height: 24px; font-size: 1rem; line-height: 1.4rem;
+
+// @include font-size(1,1);
+//// font-size: 16px; line-height: 16px; font-size: 1rem; line-height: 1rem;
+@mixin font-size($sizeValue: 1, $line: $sizeValue * 1.5){
+  font-size: ($sizeValue * 16) + px;
+  line-height: ($line * 16) + px;
+  font-size: ($sizeValue) + rem;
+  line-height: ($line) + rem;
+}
+
+// @include px-rem(margin, 1, 2, 0, 0);
+//// margin: 16px 20px 0 0; margin: 1rem 1.25rem 0 0;
+$unit-default-px: 16px;
+@function fix8_unit_to_px($val) {
+  @if $val == auto {
+	@return $val;
+  }
+  @else {
+	@if unitless($val) {
+	  @if $val == 0 { @return $val }
+	  @else { @return $val * $unit-default-px};
+	} @else { @return $val};
+  }
+}
+@function fix8_unit_to_rem($val) {
+  @if $val == auto {
+	@return $val;
+  }
+  @else {
+	@if unitless($val) {
+	  @if $val == 0 { @return $val }
+	  @else { @return $val+rem};
+	} @else { @return $val};
+  }
+}
+@mixin px-rem($prop, $val...) {
+  $n: length($val);
+  $i: 1;
+
+  $px-list: ();
+  $rem-list: ();
+
+  @while $i <= $n {
+	$px-list: append($px-list, fix8_unit_to_px(nth($val, $i)));
+	$rem-list: append($rem-list, fix8_unit_to_rem(nth($val, $i)));
+	$i: $i + 1;
+  }
+
+  #{$prop}: $px-list;
+  #{$prop}: $rem-list;
+}
