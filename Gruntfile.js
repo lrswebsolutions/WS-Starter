@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           // what files would you like to combine?
           'assets/_source/js/functions.js'
         ],
-        // where would you like them to be cmbined to?
+        // where would you like them to be combined to?
         dest: 'assets/_source/js/main.js',
       }
     },
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         },
         files: {
           // on the left is our css output and the right is what scss file we are watching
-          'assets/css/main.min.css': 'assets/_source/scss/main.scss'
+          'skin.css': 'assets/_source/scss/main.scss'
         }
       }
     },
