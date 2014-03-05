@@ -18,7 +18,7 @@ module.exports = function(grunt) {
           // what files would you like to combine?
           'assets/_source/js/functions.js'
         ],
-        // where would you like them to be cmbined to?
+        // where would you like them to be combined to?
         dest: 'assets/_source/js/main.js',
       }
     },
@@ -32,9 +32,10 @@ module.exports = function(grunt) {
     },
     // image minification
     imagemin: {
-        dynamic: {
+      // images used for ui only
+      css_images: {
         options: {
-            cache: 'false'
+          cache: 'false'
         },
         files: [{
           expand: true,
@@ -43,6 +44,20 @@ module.exports = function(grunt) {
           src: ['**/*.{png,jpg,gif}'],
           // and here is where we will stick those minified images
           dest: 'assets/css/img/'
+        }]
+      },
+      // images used for content
+      content_images: {
+        options: {
+          cache: 'false'
+        },
+        files: [{
+          expand: true,
+          // this directory will be where we watch for images to minify
+          cwd: 'assets/img/',
+          src: ['**/*.{png,jpg,gif}'],
+          // and here is where we will stick those minified images
+          dest: 'assets/img/'
         }]
       }
     },
@@ -60,16 +75,33 @@ module.exports = function(grunt) {
     },
     // lets watch all of these files from above for changes so we can run grunt automatically
     watch: {
+      grunt: {
+        files: ['package.json','Gruntfile.js']
+      },
       scripts: {
-        files: ['assets/_source/js/*.js'],
+        files: ['assets/_source/js/**/*.js'],
         tasks: ['concat', 'uglify'],
         options: {
           spawn: false,
         },
       },
       css: {
-        files: ['assets/_source/scss/*.scss'],
+        files: ['assets/_source/scss/**/*.scss'],
         tasks: ['sass'],
+        options: {
+          spawn: false,
+        }
+      },
+      css_images: {
+        files: ['assets/_source/css/img/**/*.{png,jpg,gif}'],
+        tasks: ['imagemin'],
+        options: {
+          spawn: false,
+        }
+      },
+      content_images: {
+        files: ['assets/_source/css/img/**/*.{png,jpg,gif}'],
+        tasks: ['imagemin'],
         options: {
           spawn: false,
         }
