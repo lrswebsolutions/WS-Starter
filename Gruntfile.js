@@ -24,11 +24,17 @@ module.exports = function(grunt) {
     },
     // js uglification/compression
     uglify: {
-      build: {
-        // now we are going to take the file from above and compress the hell out of it!
-        src: 'assets/_source/js/main.js',
-        dest: 'assets/js/main.min.js'
-      }
+      main_js: {
+        files: {
+          'assets/_source/js/main.js' : ['assets/js/main.min.js']
+        }
+      }//,
+      // uncomment previous and following lines to uglify another file separately
+      //other_js: {
+      //  files: {
+      //    'assets/_source/js/main.js' : ['assets/js/main.min.js']
+      //  }
+      //}
     },
     // image minification
     imagemin: {
@@ -79,7 +85,7 @@ module.exports = function(grunt) {
         files: ['package.json','Gruntfile.js']
       },
       scripts: {
-        files: ['assets/_source/js/**/*.js'],
+        files: ['assets/_source/js/**/*.js','!assets/_source/js/jquery.main.js'],
         tasks: ['concat', 'uglify'],
         options: {
           spawn: false,
