@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+	<template>ULTokens.txt</template>
+	<!-- Included for reference only
+	<stylesheets>
+		<stylesheet>ddrMenu.css</stylesheet>
+	</stylesheets>
+	<scripts>
+		<script>ddrMenu.js</script>
+	</scripts>
+	-->
+</manifest>
