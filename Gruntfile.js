@@ -26,13 +26,13 @@ module.exports = function(grunt) {
     uglify: {
       main_js: {
         files: {
-          'assets/_source/js/main.js' : ['assets/js/main.min.js']
+          'assets/js/main.min.js' : ['assets/_source/js/main.min.js']
         }
       }//,
       // uncomment previous and following lines to uglify another file separately
       //other_js: {
       //  files: {
-      //    'assets/_source/js/main.js' : ['assets/js/main.min.js']
+      //    'assets/js/main.min.js' : ['assets/_source/js/main.min.js']
       //  }
       //}
     },
@@ -40,9 +40,6 @@ module.exports = function(grunt) {
     imagemin: {
       // images used for ui only
       css_images: {
-        options: {
-          cache: 'false'
-        },
         files: [{
           expand: true,
           // this directory will be where we watch for images to minify
@@ -50,13 +47,13 @@ module.exports = function(grunt) {
           src: ['**/*.{png,jpg,gif}'],
           // and here is where we will stick those minified images
           dest: 'assets/css/img/'
-        }]
+        }],
+        options: {
+            cache: false
+        }
       },
       // images used for content
       content_images: {
-        options: {
-          cache: 'false'
-        },
         files: [{
           expand: true,
           // this directory will be where we watch for images to minify
@@ -64,7 +61,10 @@ module.exports = function(grunt) {
           src: ['**/*.{png,jpg,gif}'],
           // and here is where we will stick those minified images
           dest: 'assets/img/'
-        }]
+        }],
+        options: {
+            cache: false
+        }
       }
     },
     // sass processing
@@ -122,6 +122,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+
 
   // registering those tasks
   grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'sass', 'watch', 'jshint']);
