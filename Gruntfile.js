@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         },
         files: {
           // on the left is our css output and the right is what scss file we are watching
-          'skin.css': 'assets/_source/scss/main.scss'
+          'skin.css': 'assets/_source/scss/**/*.scss'
         }
       }
     },
