@@ -9,7 +9,7 @@
     "grunt-contrib-concat": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-imagemin": "~0.4.1",
+    "grunt-contrib-imagemin": "latest",
     "grunt-contrib-sass": "latest",
     "grunt-contrib-jshint": "latest"
   }
