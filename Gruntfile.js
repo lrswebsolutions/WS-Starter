@@ -54,21 +54,21 @@ module.exports = function(grunt) {
         },
         files: {
           // on the left is our css output and the right is what scss file we are watching
-          'skin.css': 'assets/_source/scss/**/*.scss'
+          'skin.css': 'assets/_source/scss/main.scss'
         }
       }
     },
     // lets watch all of these files from above for changes so we can run grunt automatically
     watch: {
       scripts: {
-        files: ['assets/_source/js/*.js'],
+        files: ['assets/_source/js/**/*.js'],
         tasks: ['concat', 'uglify'],
         options: {
           spawn: false,
         },
       },
       css: {
-        files: ['assets/_source/scss/*.scss'],
+        files: ['assets/_source/scss/**/*.scss'],
         tasks: ['sass'],
         options: {
           spawn: false,
