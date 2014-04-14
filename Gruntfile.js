@@ -60,6 +60,9 @@ module.exports = function(grunt) {
     },
     // lets watch all of these files from above for changes so we can run grunt automatically
     watch: {
+      grunt: {
+        files: ['package.json','Gruntfile.js']
+      },
       scripts: {
         files: ['assets/_source/js/**/*.js'],
         tasks: ['concat', 'uglify'],
@@ -67,7 +70,7 @@ module.exports = function(grunt) {
           spawn: false,
         },
       },
-      css: {
+      sass: {
         files: ['assets/_source/scss/**/*.scss'],
         tasks: ['sass'],
         options: {
@@ -84,6 +87,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-newer');
 
   // registering those tasks
   grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'sass', 'watch', 'jshint']);
