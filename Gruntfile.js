@@ -91,7 +91,7 @@ module.exports = function(grunt) {
           spawn: false,
         },
       },
-      css: {
+      sass: {
         files: ['assets/_source/scss/**/*.scss'],
         tasks: ['sass'],
         options: {
@@ -122,6 +122,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-newer');
 
 
   // registering those tasks
