@@ -1,16 +1,17 @@
 {
-  "name": "Project-Name",
-  "version": "0.0.0",
-  "description": "Project description",
-  "author": "LRS Web Solutions",
-  "license": "ISC",
-  "devDependencies": {
-    "grunt": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-imagemin": "~0.4.1",
-    "grunt-contrib-sass": "latest",
-    "grunt-contrib-jshint": "latest"
-  }
+    "name": "Project-Name",
+    "version": "0.0.0",
+    "description": "Project description",
+    "author": "LRS Web Solutions",
+    "license": "ISC",
+    "devDependencies": {
+        "grunt": "latest",
+        "grunt-contrib-concat": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-imagemin": "~0.4.1",
+        "grunt-contrib-sass": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-stylus": "stylus"
+    }
 }
