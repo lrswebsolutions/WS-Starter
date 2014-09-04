@@ -28,13 +28,7 @@ module.exports = function(grunt) {
                 files: {
                     'assets/js/main.min.js': ['assets/_source/js/main.js']
                 }
-            } //,
-            // uncomment previous and following lines to uglify another file separately
-            //other_js: {
-            //  files: {
-            //    'assets/js/main.min.js' : ['assets/_source/js/main.min.js']
-            //  }
-            //}
+            }
         },
         // image minification
         imagemin: {
@@ -67,8 +61,20 @@ module.exports = function(grunt) {
                 }
             }
         },
-        // sass processing
-        sass: {
+        // sass development processing
+        sassdev: {
+            dist: {
+                options: {
+                    style: 'expanded'
+                },
+                files: {
+                    // on the left is our css output and the right is what scss file we are watching
+                    'assets/css/main.css': 'assets/_source/scss/main.scss'
+                }
+            }
+        },
+        // sass production processing
+        sassprod: {
             dist: {
                 options: {
                     style: 'compressed'
@@ -91,7 +97,14 @@ module.exports = function(grunt) {
                     spawn: false,
                 },
             },
-            sass: {
+            sassdev: {
+                files: ['assets/_source/scss/**/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    spawn: false,
+                }
+            },
+            sassprod: {
                 files: ['assets/_source/scss/**/*.scss'],
                 tasks: ['sass'],
                 options: {
@@ -122,10 +135,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-newer');
-
 
     // registering those tasks
-    grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'sass', 'watch', 'jshint', 'stylus']);
+    grunt.registerTask('default', ['concat', 'uglify', 'imagemin', 'sass', 'watch', 'jshint']);
 
 };
